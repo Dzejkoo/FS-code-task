@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
    @media screen and (max-width: 700px){
         flex-direction: column;
         width: 90%;
-        padding: 10px 10px 10px 10px;
         border: 1px solid;
         margin: 0 auto;
    }
