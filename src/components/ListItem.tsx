@@ -1,5 +1,5 @@
 import React from "react";
-import {Wrapper, Header, Title, AssignedToWrapper, BasicInfo, AssignedTo } from './List.styles'
+import { Wrapper, WorkOrder, Description, ReceivedDate, AssignedTo, Status, Priority } from "./List.styles";
 
 interface IResponse  {
     info: {
@@ -16,27 +16,26 @@ interface IResponse  {
 };
 
 
+
+
 export const ListItem = ( { info: {work_order_id, status, received_date, priority, description, assigned_to } }: IResponse) =>{
         
     return(
         <Wrapper>
-            <Header>
-                <Title>{work_order_id}</Title>
-                <p>{description}</p>
-            </Header>
-            <AssignedToWrapper>
-                <BasicInfo>
-                    <span>{status}</span>
-                    <span>{received_date}</span>
-                    <span>{priority}</span>
-                </BasicInfo>
-                {assigned_to?.map((item, key) =>
-                    <AssignedTo key={key}>
-                        <span>{item.person_name}</span>
-                        <span>{item.status}</span>
-                    </AssignedTo>
-                )}
-            </AssignedToWrapper>
+                <WorkOrder>{work_order_id}</WorkOrder>
+                <Description>{description}</Description>
+                <ReceivedDate>{received_date}</ReceivedDate>
+                <AssignedTo>
+                    {assigned_to?.map((item, key) =>
+                        <span key={key}>
+                            <span>{item.person_name}</span> 
+                            <span>{item.status}</span>
+                        </span>
+                    )}
+                </AssignedTo>
+
+                <Status>{status}</Status>
+                <Priority>{priority}</Priority>
         </Wrapper>
     )
 }

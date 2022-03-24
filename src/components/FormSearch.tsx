@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ListItem } from './ListItem'
-import {Wrapper, WrapperList} from './FormSearch.styles'
-
+import {Wrapper, WrapperList, SearchWrapper} from './FormSearch.styles'
+import { Header } from './Header'
 interface IProps {
     info?:
     {
@@ -54,8 +54,12 @@ export const FormSearch = ({ info }: IProps) =>{
 
     return(
         <Wrapper>
-            <input value={query} onChange={inputHandler} />
+            <SearchWrapper>
+                <label> Search: </label>
+                <input value={query} onChange={inputHandler} />
+            </SearchWrapper>
             <WrapperList>
+                <Header />
                 {result && result.length > 0 ? ( query.length && result?.length ? 
                     ( result?.map((item, key)=> <ListItem info={item} key={key}/>)  ) : 
                     ( info?.data.map((item, key) => <ListItem info={item} key={key} />) ) ) : 
